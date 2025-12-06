@@ -76,28 +76,35 @@ function showToast(message) {
 }
 
 // --- 5. "View Catalog" Smooth Scroll ---
+// --- 5. "View Catalog" Toggle Logic ---
 const viewCatalogBtn = document.querySelector('.btn-secondary');
+const catalogSection = document.getElementById('catalog-gallery');
+
 viewCatalogBtn.addEventListener('click', () => {
-    document.getElementById('resources').scrollIntoView({ behavior: 'smooth' });
+    // Toggle the 'open' class
+    catalogSection.classList.toggle('open');
+    
+    // Change Button Text based on state
+    if (catalogSection.classList.contains('open')) {
+        viewCatalogBtn.textContent = "Close Catalog";
+        viewCatalogBtn.style.background = "rgba(255,255,255,0.1)";
+        
+        // Slight delay to allow animation to start before scrolling
+        setTimeout(() => {
+            catalogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+    } else {
+        viewCatalogBtn.textContent = "View Catalog";
+        viewCatalogBtn.style.background = "transparent";
+    }
 });
 
-// --- 6. Login Simulation ---
-const loginBtn = document.querySelector('.btn-login');
-let isLoggedIn = false;
-
-loginBtn.addEventListener('click', () => {
-    if (!isLoggedIn) {
-        // Simulate Login
-        loginBtn.textContent = "Hi, Sidharth";
-        loginBtn.style.background = "var(--secondary)";
-        loginBtn.style.color = "#000";
-        showToast("Welcome back, Sidharth!");
-        isLoggedIn = true;
-    } else {
-        // Simulate Logout
-        loginBtn.textContent = "Student Login";
-        loginBtn.style.background = "transparent";
-        loginBtn.style.color = "var(--secondary)";
-        isLoggedIn = false;
-    }
+// Add functionality to the new "Reserve" buttons in the catalog
+document.querySelectorAll('.btn-mini').forEach(btn => {
+    btn.addEventListener('click', function() {
+        if(!this.classList.contains('disabled')) {
+            // reuse the modal logic!
+            document.getElementById('bookingModal').classList.add('active');
+        }
+    });
 });
