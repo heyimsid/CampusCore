@@ -75,36 +75,45 @@ function showToast(message) {
     }, 3000);
 }
 
-// --- 5. "View Catalog" Smooth Scroll ---
-// --- 5. "View Catalog" Toggle Logic ---
+// --- 5. Catalog Modal Logic ---
+const catalogModal = document.getElementById('catalogModal');
 const viewCatalogBtn = document.querySelector('.btn-secondary');
-const catalogSection = document.getElementById('catalog-gallery');
+const closeCatalogBtn = document.getElementById('closeCatalog');
 
+// Open Catalog
 viewCatalogBtn.addEventListener('click', () => {
-    // Toggle the 'open' class
-    catalogSection.classList.toggle('open');
-    
-    // Change Button Text based on state
-    if (catalogSection.classList.contains('open')) {
-        viewCatalogBtn.textContent = "Close Catalog";
-        viewCatalogBtn.style.background = "rgba(255,255,255,0.1)";
-        
-        // Slight delay to allow animation to start before scrolling
-        setTimeout(() => {
-            catalogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-    } else {
-        viewCatalogBtn.textContent = "View Catalog";
-        viewCatalogBtn.style.background = "transparent";
+    catalogModal.classList.add('active');
+});
+
+// Close Catalog
+closeCatalogBtn.addEventListener('click', () => {
+    catalogModal.classList.remove('active');
+});
+
+// Close Catalog if clicked outside
+catalogModal.addEventListener('click', (e) => {
+    if (e.target === catalogModal) {
+        catalogModal.classList.remove('active');
     }
 });
 
-// Add functionality to the new "Reserve" buttons in the catalog
-document.querySelectorAll('.btn-mini').forEach(btn => {
-    btn.addEventListener('click', function() {
-        if(!this.classList.contains('disabled')) {
-            // reuse the modal logic!
-            document.getElementById('bookingModal').classList.add('active');
-        }
-    });
-});
+// --- Smart Switch: Close Catalog -> Open Booking ---
+function switchModal(itemName) {
+    // 1. Close the Catalog
+    catalogModal.classList.remove('active');
+    
+    // 2. Open the Booking Modal (after small delay for smooth transition)
+    setTimeout(() => {
+        const bookingModal = document.getElementById('bookingModal');
+        bookingModal.classList.add('active');
+        
+        // 3. Auto-fill the item name in the select box (Optional fancy touch)
+        // This is a simple visual hack to show we selected the item
+        const select = document.getElementById('resourceSelect');
+        // Create a temporary option if it doesn't exist
+        let option = new Option(itemName, itemName);
+        select.add(option, undefined);
+        select.value = itemName;
+        
+    }, 300); // 300ms delay matches the CSS transition
+}
