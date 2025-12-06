@@ -3,22 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CampusCore - Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Nexus | Campus Resource Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-100 flex items-center justify-center h-screen">
+<body>
 
-    <div class="bg-white p-10 rounded-xl shadow-lg w-96">
-        <h1 class="text-2xl font-bold text-center mb-6">CampusCore Login</h1>
-        <form action="dashboard.html" method="GET" class="space-y-5">
-            <input type="text" placeholder="Username" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <input type="password" placeholder="Password" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
-            <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition">Login</button>
-        </form>
-        <p class="text-sm text-center mt-4 text-gray-500">© 2025 CampusCore</p>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
     </div>
 
+    <nav class="navbar">
+        <div class="logo">NEXUS<span class="dot">.</span></div>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="btn-login">Student Login</button>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Manage Campus <br> <span class="gradient-text">At Light Speed</span></h1>
+            <p class="hero-subtitle">The ultimate platform for reserving labs, borrowing equipment, and tracking campus assets seamlessly.</p>
+            <div class="cta-group">
+                <button class="btn-primary">Book a Resource <i class="fa-solid fa-arrow-right"></i></button>
+                <button class="btn-secondary">View Catalog</button>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="glass-card float-anim">
+                <div class="card-header">
+                    <i class="fa-solid fa-microchip icon-glow"></i>
+                    <span>Status: Available</span>
+                </div>
+                <h3>Arduino Lab 3B</h3>
+                <div class="progress-bar"><div class="fill" style="width: 80%"></div></div>
+                <p>Occupancy: 80%</p>
+            </div>
+            <div class="glass-card float-anim-delayed">
+                <div class="card-header">
+                    <i class="fa-solid fa-laptop-code icon-glow"></i>
+                    <span>Due: Today</span>
+                </div>
+                <h3>MacBook Pro #42</h3>
+                <p>Borrower: Sidharth</p>
+            </div>
+        </div>
+    </header>
+
+    <section id="resources" class="features">
+        <h2 class="section-title">Premium Access</h2>
+        <div class="card-grid">
+            <div class="feature-card">
+                <div class="icon-box"><i class="fa-solid fa-flask"></i></div>
+                <h3>Lab Booking</h3>
+                <p>Real-time availability for CS, Mech, and Physics labs with instant approval.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="fa-solid fa-video"></i></div>
+                <h3>AV Equipment</h3>
+                <p>Reserve projectors, cameras, and audio gear for your events and projects.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="fa-solid fa-calendar-check"></i></div>
+                <h3>Event Halls</h3>
+                <p>Seamless scheduling for auditoriums and seminar halls with conflict detection.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
