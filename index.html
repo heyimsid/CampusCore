@@ -78,7 +78,37 @@
             </div>
         </div>
     </section>
+<div class="modal-overlay" id="bookingModal">
+        <div class="modal-glass">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <h2>Reserve Resource</h2>
+            <form id="bookingForm">
+                <div class="input-group">
+                    <label>Student Name</label>
+                    <input type="text" placeholder="e.g. Sidharth" required>
+                </div>
+                <div class="input-group">
+                    <label>Roll Number</label>
+                    <input type="text" placeholder="CS-2025-001" required>
+                </div>
+                <div class="input-group">
+                    <label>Select Resource</label>
+                    <select id="resourceSelect">
+                        <option value="Arduino Lab">Arduino Lab 3B</option>
+                        <option value="MacBook">MacBook Pro #42</option>
+                        <option value="Seminar Hall">Seminar Hall A</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Date</label>
+                    <input type="date" required>
+                </div>
+                <button type="submit" class="btn-primary full-width">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
 
+    <div id="toast" class="toast">Booking Confirmed! 🚀</div>
     <script src="script.js"></script>
 </body>
 </html>
