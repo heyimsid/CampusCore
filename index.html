@@ -79,49 +79,65 @@
         </div>
     </section>
     <section id="catalog-gallery" class="catalog-hidden">
-        <div class="catalog-header">
-            <h2><span class="gradient-text">Live Inventory</span></h2>
-            <div class="filter-tabs">
-                <span class="active">All</span>
-                <span>Electronics</span>
-                <span>Spaces</span>
+       <div class="modal-overlay" id="catalogModal">
+        <div class="modal-glass modal-large">
+            <button class="close-btn" id="closeCatalog">&times;</button>
+            <div class="catalog-header">
+                <h2>Campus Inventory</h2>
+                <div class="filter-tabs">
+                    <span class="active">All</span>
+                    <span>Electronics</span>
+                    <span>Labs</span>
+                </div>
+            </div>
+
+            <div class="modal-body-scroll">
+                <div class="inventory-grid">
+                    <div class="inventory-card">
+                        <div class="badge available">Available</div>
+                        <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
+                        <h4>Speaker Set</h4>
+                        <button class="btn-mini" onclick="switchModal('Arduino Uno')">Reserve</button>
+                    </div>
+
+                    <div class="inventory-card">
+                        <div class="badge busy">In Use</div>
+                        <div class="card-icon"><i class="fa-solid fa-camera"></i></div>
+                        <h4>Sony Alpha a7</h4>
+                        <button class="btn-mini disabled">Notify Me</button>
+                    </div>
+
+                    <div class="inventory-card">
+                        <div class="badge available">Available</div>
+                        <div class="card-icon"><i class="fa-solid fa-laptop"></i></div>
+                        <h4>MacBook Pro M2</h4>
+                        <button class="btn-mini" onclick="switchModal('MacBook Pro')">Reserve</button>
+                    </div>
+
+                    <div class="inventory-card">
+                        <div class="badge available">Available</div>
+                        <div class="card-icon"><i class="fa-brands fa-raspberry-pi"></i></div>
+                        <h4>College Bus</h4>
+                        <button class="btn-mini" onclick="switchModal('Raspberry Pi')">Reserve</button>
+                    </div>
+                    
+                    <div class="inventory-card">
+                        <div class="badge available">Available</div>
+                        <div class="card-icon"><i class="fa-solid fa-vr-cardboard"></i></div>
+                        <h4>Ground</h4>
+                        <button class="btn-mini" onclick="switchModal('VR Headset')">Reserve</button>
+                    </div>
+
+                    <div class="inventory-card">
+                        <div class="badge busy">Maintenance</div>
+                        <div class="card-icon"><i class="fa-solid fa-drone"></i></div>
+                        <h4>DJI Drone</h4>
+                        <button class="btn-mini disabled">Unavailable</button>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="inventory-grid">
-            <div class="inventory-card">
-                <div class="badge available">Available</div>
-                <div class="card-icon"><i class="fa-solid fa-microchip"></i></div>
-                <h4>Arduino Uno R3</h4>
-                <p>Qty: 12/20</p>
-                <button class="btn-mini">Reserve</button>
-            </div>
-
-            <div class="inventory-card">
-                <div class="badge busy">In Use</div>
-                <div class="card-icon"><i class="fa-solid fa-camera"></i></div>
-                <h4>Sony Alpha a7 III</h4>
-                <p>Qty: 0/2</p>
-                <button class="btn-mini disabled">Notify Me</button>
-            </div>
-
-            <div class="inventory-card">
-                <div class="badge available">Available</div>
-                <div class="card-icon"><i class="fa-solid fa-laptop"></i></div>
-                <h4>MacBook Pro M2</h4>
-                <p>Qty: 4/5</p>
-                <button class="btn-mini">Reserve</button>
-            </div>
-
-             <div class="inventory-card">
-                <div class="badge available">Available</div>
-                <div class="card-icon"><i class="fa-brands fa-raspberry-pi"></i></div>
-                <h4>Raspberry Pi 4</h4>
-                <p>Qty: 8/10</p>
-                <button class="btn-mini">Reserve</button>
-            </div>
-        </div>
-    </section>
+    </div>
 <div class="modal-overlay" id="bookingModal">
         <div class="modal-glass">
             <button class="close-btn" id="closeModal">&times;</button>
