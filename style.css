@@ -332,6 +332,7 @@ body {
 }
 
 .toast.show { transform: translateX(-50%) translateY(0); }
+
 /* Catalog Section (Hidden by default) */
 .catalog-hidden {
     max-height: 0;
@@ -342,7 +343,7 @@ body {
 }
 
 .catalog-hidden.open {
-    max-height: 1000px; /* Arbitrary large height to allow expansion */
+    max-height: 1000px;
     padding-bottom: 80px;
 }
 
@@ -415,11 +416,12 @@ body {
 .btn-mini:hover { background: var(--primary); color: white; }
 .btn-mini.disabled { border-color: #555; color: #555; cursor: not-allowed; }
 .btn-mini.disabled:hover { background: transparent; }
+
 /* Large Modal Modifier */
 .modal-glass.modal-large {
-    max-width: 900px; /* Much wider */
+    max-width: 900px;
     width: 95%;
-    max-height: 85vh; /* Don't go taller than screen */
+    max-height: 85vh;
     display: flex;
     flex-direction: column;
 }
@@ -427,43 +429,14 @@ body {
 /* Scrollable area inside the glass box */
 .modal-body-scroll {
     overflow-y: auto;
-    padding-right: 10px; /* Space for scrollbar */
+    padding-right: 10px;
     margin-top: 20px;
 }
 
-/* Custom Scrollbar for the modal */
-.modal-body-scroll::-webkit-scrollbar {
-    width: 8px;
-}
-.modal-body-scroll::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.05);
-    border-radius: 4px;
-}
-.modal-body-scroll::-webkit-scrollbar-thumb {
-    background: var(--secondary);
-    border-radius: 4px;
-}
+.modal-body-scroll::-webkit-scrollbar { width: 8px; }
+.modal-body-scroll::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
+.modal-body-scroll::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 4px; }
 
-/* Re-using Grid styles inside modal */
-.inventory-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
-    gap: 20px;
-}
-
-.inventory-card {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: 0.3s;
-}
-
-.inventory-card:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: var(--secondary);
-}
 /* --- Auth Modal Specific Styles --- */
 .auth-toggle {
     margin-top: 20px;
