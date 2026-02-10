@@ -26,7 +26,19 @@ cards.forEach(card => {
     });
 });
 
-// --- 3. Booking Modal Logic ---
+// --- 3. TOAST NOTIFICATION FUNCTION ---
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    
+    // Hide after 3 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+// --- 4. Booking Modal Logic ---
 const modal = document.getElementById('bookingModal');
 const openBtn = document.querySelector('.btn-primary'); // The "Book a Resource" button
 const closeBtn = document.getElementById('closeModal');
@@ -52,31 +64,14 @@ modal.addEventListener('click', (e) => {
     }
 });
 
-// --- 4. Form Submission Simulation ---
+// Booking Form Submit
 if(bookingForm) {
     bookingForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
-        // Close modal
         modal.classList.remove('active');
-        
-        // Show Success Toast
-        showToast("Booking Successful! Reference #8842");
-        
-        // Optional: Reset form
+        showToast("Booking Successful! Reference #8842 🚀");
         bookingForm.reset();
     });
-}
-
-function showToast(message) {
-    const toast = document.getElementById('toast');
-    toast.textContent = message;
-    toast.classList.add('show');
-    
-    // Hide after 3 seconds
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, 3000);
 }
 
 // --- 5. Catalog Modal Logic ---
@@ -87,7 +82,7 @@ const closeCatalogBtn = document.getElementById('closeCatalog');
 if(viewCatalogBtn) {
     viewCatalogBtn.addEventListener('click', () => {
         const catalogSection = document.getElementById('catalog-gallery');
-        catalogSection.classList.add('open'); // Ensure wrapper is open
+        catalogSection.classList.add('open'); 
         catalogModal.classList.add('active');
     });
 }
@@ -107,15 +102,11 @@ catalogModal.addEventListener('click', (e) => {
 
 // --- Smart Switch: Close Catalog -> Open Booking ---
 function switchModal(itemName) {
-    // 1. Close the Catalog
     catalogModal.classList.remove('active');
-    
-    // 2. Open the Booking Modal (after small delay for smooth transition)
     setTimeout(() => {
         const bookingModal = document.getElementById('bookingModal');
         bookingModal.classList.add('active');
         
-        // 3. Auto-fill the item name in the select box
         const select = document.getElementById('resourceSelect');
         let option = new Option(itemName, itemName);
         select.add(option, undefined);
@@ -126,18 +117,19 @@ function switchModal(itemName) {
 
 // --- 6. AUTH MODAL LOGIC (Login/Register) ---
 const authModal = document.getElementById('authModal');
-const loginBtn = document.getElementById('loginBtn'); // Navbar button
+const loginBtn = document.getElementById('loginBtn'); 
 const closeAuthBtn = document.getElementById('closeAuth');
 const loginView = document.getElementById('loginView');
 const registerView = document.getElementById('registerView');
 const toRegisterBtn = document.getElementById('toRegister');
 const toLoginBtn = document.getElementById('toLogin');
+const loginFormAction = document.getElementById('loginFormAction');
+const registerFormAction = document.getElementById('registerFormAction');
 
 // Open Auth Modal
 if(loginBtn) {
     loginBtn.addEventListener('click', () => {
         authModal.classList.add('active');
-        // Always start with login view
         loginView.style.display = 'block';
         registerView.style.display = 'none';
     });
@@ -172,5 +164,35 @@ if(toLoginBtn) {
     toLoginBtn.addEventListener('click', () => {
         registerView.style.display = 'none';
         loginView.style.display = 'block';
+    });
+}
+
+// --- 7. HANDLE LOGIN & REGISTER SUBMIT ---
+
+// Login Success Simulation
+if(loginFormAction) {
+    loginFormAction.addEventListener('submit', (e) => {
+        e.preventDefault(); // Stop page reload
+        
+        // Simulating a check...
+        authModal.classList.remove('active');
+        showToast("Login Successful! Welcome back 🔓");
+        
+        // Optional: Reset form
+        loginFormAction.reset();
+    });
+}
+
+// Register Success Simulation
+if(registerFormAction) {
+    registerFormAction.addEventListener('submit', (e) => {
+        e.preventDefault(); // Stop page reload
+        
+        // Simulating a check...
+        authModal.classList.remove('active');
+        showToast("Registration Successful! Account Created 🚀");
+        
+        // Optional: Reset form
+        registerFormAction.reset();
     });
 }
