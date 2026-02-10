@@ -176,7 +176,7 @@ if(loginFormAction) {
         
         // Simulating a check...
         authModal.classList.remove('active');
-        showToast("Login Successful! Welcome back 🔓");
+        showToast("Login Successful! Welcome back ");
         
         // Optional: Reset form
         loginFormAction.reset();
@@ -190,7 +190,7 @@ if(registerFormAction) {
         
         // Simulating a check...
         authModal.classList.remove('active');
-        showToast("Registration Successful! Account Created 🚀");
+        showToast("Registration Successful! Account Created ");
         
         // Optional: Reset form
         registerFormAction.reset();
