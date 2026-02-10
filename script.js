@@ -117,3 +117,43 @@ function switchModal(itemName) {
         
     }, 300); // 300ms delay matches the CSS transition
 }
+// --- 6. Auth Modal Logic (Login/Register) ---
+const authModal = document.getElementById('authModal');
+const loginBtn = document.getElementById('loginBtn'); // Navbar button
+const closeAuthBtn = document.getElementById('closeAuth');
+const loginView = document.getElementById('loginView');
+const registerView = document.getElementById('registerView');
+const toRegisterBtn = document.getElementById('toRegister');
+const toLoginBtn = document.getElementById('toLogin');
+
+// Open Auth Modal
+loginBtn.addEventListener('click', () => {
+    authModal.classList.add('active');
+    // Always start with login view
+    loginView.style.display = 'block';
+    registerView.style.display = 'none';
+});
+
+// Close Auth Modal
+closeAuthBtn.addEventListener('click', () => {
+    authModal.classList.remove('active');
+});
+
+// Close if clicked outside
+authModal.addEventListener('click', (e) => {
+    if (e.target === authModal) {
+        authModal.classList.remove('active');
+    }
+});
+
+// Switch to Register
+toRegisterBtn.addEventListener('click', () => {
+    loginView.style.display = 'none';
+    registerView.style.display = 'block';
+});
+
+// Switch to Login
+toLoginBtn.addEventListener('click', () => {
+    registerView.style.display = 'none';
+    loginView.style.display = 'block';
+});
