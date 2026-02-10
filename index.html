@@ -112,4 +112,112 @@
                         <div class="badge available">Available</div>
                         <div class="card-icon"><i class="fa-solid fa-laptop"></i></div>
                         <h4>MacBook Pro M2</h4>
-                        <button class="btn
+                        <button class="btn-mini" onclick="switchModal('MacBook Pro')">Reserve</button>
+                    </div>
+
+                    <div class="inventory-card">
+                        <div class="badge available">Available</div>
+                        <div class="card-icon"><i class="fa-solid fa-bus-simple"></i></div>
+                        <h4>College Bus</h4>
+                        <button class="btn-mini" onclick="switchModal('College Bus')">Reserve</button>
+                    </div>
+                    
+                    <div class="inventory-card">
+                        <div class="badge available">Available</div>
+                        <div class="card-icon"><i class="fa-solid fa-person-running"></i></div>
+                        <h4>Ground</h4>
+                        <button class="btn-mini" onclick="switchModal('Ground')">Reserve</button>
+                    </div>
+
+                    <div class="inventory-card">
+                        <div class="badge busy">Maintenance</div>
+                        <div class="card-icon"><i class="fa-solid fa-fan"></i></div>
+                        <h4>DJI Drone</h4>
+                        <button class="btn-mini disabled">Unavailable</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-glass">
+            <button class="close-btn" id="closeModal">&times;</button>
+            <h2>Reserve Resource</h2>
+            <form id="bookingForm">
+                <div class="input-group">
+                    <label>Student Name</label>
+                    <input type="text" placeholder="e.g. Sidharth" required>
+                </div>
+                <div class="input-group">
+                    <label>Roll Number</label>
+                    <input type="text" placeholder="CS-2025-001" required>
+                </div>
+                <div class="input-group">
+                    <label>Select Resource</label>
+                    <select id="resourceSelect">
+                        <option value="Arduino Lab">Main Seminar Hall</option>
+                        <option value="MacBook">ASUS ROG</option>
+                        <option value="Seminar Hall">Seminar Hall CS</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Date</label>
+                    <input type="date" required>
+                </div>
+                <button type="submit" class="btn-primary full-width">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="authModal">
+        <div class="modal-glass" style="max-width: 400px;">
+            <button class="close-btn" id="closeAuth">&times;</button>
+            
+            <div id="loginView">
+                <h2>Welcome Back</h2>
+                <form>
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="student@nexus.edu" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Login</button>
+                    <div class="auth-toggle">
+                        <p>New to Nexus? <span id="toRegister">Create Account</span></p>
+                    </div>
+                </form>
+            </div>
+
+            <div id="registerView" style="display: none;">
+                <h2>Create Account</h2>
+                <form>
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="student@nexus.edu" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Sign Up</button>
+                    <div class="auth-toggle">
+                        <p>Already have an account? <span id="toLogin">Login here</span></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast">Booking Confirmed! 🚀</div>
+    <script src="script.js"></script>
+</body>
+</html>
