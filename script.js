@@ -26,22 +26,24 @@ cards.forEach(card => {
     });
 });
 
-// --- 3. Modal Logic (The New Part) ---
+// --- 3. Booking Modal Logic ---
 const modal = document.getElementById('bookingModal');
 const openBtn = document.querySelector('.btn-primary'); // The "Book a Resource" button
 const closeBtn = document.getElementById('closeModal');
 const bookingForm = document.getElementById('bookingForm');
 
-// Open Modal
-openBtn.addEventListener('click', (e) => {
-    e.preventDefault(); // Stop jump to top
-    modal.classList.add('active');
-});
+if(openBtn) {
+    openBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.classList.add('active');
+    });
+}
 
-// Close Modal
-closeBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-});
+if(closeBtn) {
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+}
 
 // Close if clicked outside
 modal.addEventListener('click', (e) => {
@@ -51,18 +53,20 @@ modal.addEventListener('click', (e) => {
 });
 
 // --- 4. Form Submission Simulation ---
-bookingForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // Prevent actual server submit for now
-    
-    // Close modal
-    modal.classList.remove('active');
-    
-    // Show Success Toast
-    showToast("Booking Successful! Reference #8842");
-    
-    // Optional: Reset form
-    bookingForm.reset();
-});
+if(bookingForm) {
+    bookingForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Close modal
+        modal.classList.remove('active');
+        
+        // Show Success Toast
+        showToast("Booking Successful! Reference #8842");
+        
+        // Optional: Reset form
+        bookingForm.reset();
+    });
+}
 
 function showToast(message) {
     const toast = document.getElementById('toast');
@@ -80,15 +84,19 @@ const catalogModal = document.getElementById('catalogModal');
 const viewCatalogBtn = document.querySelector('.btn-secondary');
 const closeCatalogBtn = document.getElementById('closeCatalog');
 
-// Open Catalog
-viewCatalogBtn.addEventListener('click', () => {
-    catalogModal.classList.add('active');
-});
+if(viewCatalogBtn) {
+    viewCatalogBtn.addEventListener('click', () => {
+        const catalogSection = document.getElementById('catalog-gallery');
+        catalogSection.classList.add('open'); // Ensure wrapper is open
+        catalogModal.classList.add('active');
+    });
+}
 
-// Close Catalog
-closeCatalogBtn.addEventListener('click', () => {
-    catalogModal.classList.remove('active');
-});
+if(closeCatalogBtn) {
+    closeCatalogBtn.addEventListener('click', () => {
+        catalogModal.classList.remove('active');
+    });
+}
 
 // Close Catalog if clicked outside
 catalogModal.addEventListener('click', (e) => {
@@ -107,17 +115,16 @@ function switchModal(itemName) {
         const bookingModal = document.getElementById('bookingModal');
         bookingModal.classList.add('active');
         
-        // 3. Auto-fill the item name in the select box (Optional fancy touch)
-        // This is a simple visual hack to show we selected the item
+        // 3. Auto-fill the item name in the select box
         const select = document.getElementById('resourceSelect');
-        // Create a temporary option if it doesn't exist
         let option = new Option(itemName, itemName);
         select.add(option, undefined);
         select.value = itemName;
         
-    }, 300); // 300ms delay matches the CSS transition
+    }, 300);
 }
-// --- 6. Auth Modal Logic (Login/Register) ---
+
+// --- 6. AUTH MODAL LOGIC (Login/Register) ---
 const authModal = document.getElementById('authModal');
 const loginBtn = document.getElementById('loginBtn'); // Navbar button
 const closeAuthBtn = document.getElementById('closeAuth');
@@ -127,33 +134,43 @@ const toRegisterBtn = document.getElementById('toRegister');
 const toLoginBtn = document.getElementById('toLogin');
 
 // Open Auth Modal
-loginBtn.addEventListener('click', () => {
-    authModal.classList.add('active');
-    // Always start with login view
-    loginView.style.display = 'block';
-    registerView.style.display = 'none';
-});
+if(loginBtn) {
+    loginBtn.addEventListener('click', () => {
+        authModal.classList.add('active');
+        // Always start with login view
+        loginView.style.display = 'block';
+        registerView.style.display = 'none';
+    });
+}
 
 // Close Auth Modal
-closeAuthBtn.addEventListener('click', () => {
-    authModal.classList.remove('active');
-});
+if(closeAuthBtn) {
+    closeAuthBtn.addEventListener('click', () => {
+        authModal.classList.remove('active');
+    });
+}
 
 // Close if clicked outside
-authModal.addEventListener('click', (e) => {
-    if (e.target === authModal) {
-        authModal.classList.remove('active');
-    }
-});
+if(authModal) {
+    authModal.addEventListener('click', (e) => {
+        if (e.target === authModal) {
+            authModal.classList.remove('active');
+        }
+    });
+}
 
 // Switch to Register
-toRegisterBtn.addEventListener('click', () => {
-    loginView.style.display = 'none';
-    registerView.style.display = 'block';
-});
+if(toRegisterBtn) {
+    toRegisterBtn.addEventListener('click', () => {
+        loginView.style.display = 'none';
+        registerView.style.display = 'block';
+    });
+}
 
 // Switch to Login
-toLoginBtn.addEventListener('click', () => {
-    registerView.style.display = 'none';
-    loginView.style.display = 'block';
-});
+if(toLoginBtn) {
+    toLoginBtn.addEventListener('click', () => {
+        registerView.style.display = 'none';
+        loginView.style.display = 'block';
+    });
+}
